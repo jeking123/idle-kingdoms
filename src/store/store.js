@@ -10,26 +10,26 @@ export default new Vuex.Store({
       days: 0,
       hrs: 0
     },
-    resources: [
-      // gathered resources
-      [
-        {name: 'food', quantity: 0, icon: 'mdi-barley'},
-        {name: 'wood', quantity: 0, icon: 'mdi-pine-tree'},
-        {name: 'stone', quantity: 0, icon: 'mdi-cloud'}
-      ],
-      // // found resources
-      // [
-      //   {name: 'skin', quantity: 0, icon: 'mdi-cow'},
-      //   {name: 'herbs', quantity: 0, icon: 'mdi-mushroom'},
-      //   {name: 'ore', quantity: 0, icon: 'mdi-rhombus-medium'}
-      // ],
-      // // refined resources
-      // [
-      //   {name: 'leather', quantity: 0, icon: 'mdi-thumb-up'},
-      //   {name: 'metal', quantity: 0, icon: 'mdi-instapaper mdi-rotate-90'},
-      //   {name: 'peity', quantity: 0, icon: 'mdi-christianity'}
-      // ]
-    ],
+    // resources: [
+    //   // gathered resources
+    //   [
+    //     {name: 'food', quantity: 0, icon: 'mdi-barley'},
+    //     {name: 'wood', quantity: 0, icon: 'mdi-pine-tree'},
+    //     {name: 'stone', quantity: 0, icon: 'mdi-cloud'}
+    //   ],
+    //   // // found resources
+    //   // [
+    //   //   {name: 'skin', quantity: 0, icon: 'mdi-cow'},
+    //   //   {name: 'herbs', quantity: 0, icon: 'mdi-mushroom'},
+    //   //   {name: 'ore', quantity: 0, icon: 'mdi-rhombus-medium'}
+    //   // ],
+    //   // // refined resources
+    //   // [
+    //   //   {name: 'leather', quantity: 0, icon: 'mdi-thumb-up'},
+    //   //   {name: 'metal', quantity: 0, icon: 'mdi-instapaper mdi-rotate-90'},
+    //   //   {name: 'peity', quantity: 0, icon: 'mdi-christianity'}
+    //   // ]
+    // ],
     people: [
       {name: 'people', quantity: 5, max: 10}
     ],
@@ -46,7 +46,7 @@ export default new Vuex.Store({
       [
         {name: 'driers', quantity: 0},
         {name: 'blacksmiths', quantity: 0},
-        {name: 'priests', quantity: 0},
+        {name: 'priests', quantity: 0}
       ]
     ],
     buildings: [

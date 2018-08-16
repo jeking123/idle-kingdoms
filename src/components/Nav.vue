@@ -26,7 +26,7 @@
     border-bottom: .25pt solid #dbdbdb;
   }
   .is-active {
-    height: 70px;
-    font-size: 2.1em !important;
+    height: 60px;
+    font-size: 1.5em !important;
   }
 </style>
