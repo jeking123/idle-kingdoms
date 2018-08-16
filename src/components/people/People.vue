@@ -11,10 +11,14 @@
         </div>
         <div>
             <div>
-                <div v-for="type in this.$store.state.popButton" class="button" :key="type">{{type.name}}</div>
+                <div v-for="type in this.$store.state.popButton" class="button" :key="type" @click="citizenToggle = !citizenToggle">{{type.name}}</div>
             </div>
-            <div v-for="type in this.$store.state.population" class="" :key="type">
-                <div v-for="unit in type" :key="unit">unit</div>
+            <div class="columns is-mobile is-multiline" v-for="type in this.$store.state.population" :key="type" :class="{citizenToggle: citizenToggle}">
+                <div class="column columns is-mobile is-12 is-multiline" v-for="unit in type" :key="unit">
+                    <div class="column is-narrow is-size-1">-</div>
+                    <div class="column is-expanded">{{unit.name}}</div>
+                    <div class="column is-narrow is-size-1">+</div>
+                </div>
             </div>
             
         </div>
@@ -24,6 +28,13 @@
 <script>
 import { mapActions } from 'vuex'
 export default {
+    data() {
+        return {
+            state: {
+                citizenToggle: false
+            }
+        }
+    },
     methods: {
         ...mapActions([
             'recruitPop'
@@ -35,5 +46,8 @@ export default {
 <style scoped>
 .is-margineless-bot {
     margin-bottom: 0px;
+}
+.citizenToggle {
+    display: none;
 }
 </style>

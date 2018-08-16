@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import gather from './modules/gather'
 
 Vue.use(Vuex)
 
@@ -68,18 +69,18 @@ export default new Vuex.Store({
 
   },
   mutations: {
-    gatherRecs: (state, payload) => {
-      if (payload === 'food') {
-        state.resources[0][0].quantity++
-        // if (Math.round(Math.random() * 100) < 2) { state.resources[1][0].quantity += 1 }
-      } else if (payload === 'wood') {
-        state.resources[0][1].quantity++
-        // if (Math.round(Math.random() * 100) < 10) { state.resources[1][1].quantity += 1 }
-      } else if (payload === 'stone') {
-        state.resources[0][2].quantity++
-        // if (Math.round(Math.random() * 100) <= 1) { state.resources[1][2].quantity += 1 }
-      }
-    },
+    // gatherRecs: (state, payload) => {
+    //   if (payload === 'food') {
+    //     state.resources[0][0].quantity++
+    //     // if (Math.round(Math.random() * 100) < 2) { state.resources[1][0].quantity += 1 }
+    //   } else if (payload === 'wood') {
+    //     state.resources[0][1].quantity++
+    //     // if (Math.round(Math.random() * 100) < 10) { state.resources[1][1].quantity += 1 }
+    //   } else if (payload === 'stone') {
+    //     state.resources[0][2].quantity++
+    //     // if (Math.round(Math.random() * 100) <= 1) { state.resources[1][2].quantity += 1 }
+    //   }
+    // },
     farms: state => {
       if (state.buildings[0][0].quantity >= 1) {
         state.resources[0][0].quantity += (state.buildings[0][0].quantity * 1)
@@ -124,9 +125,9 @@ export default new Vuex.Store({
   },
   actions: {
     // ES6 shorten to pass only needed method through
-    gatherRec: ({commit}, payload) => {
-      commit('gatherRecs', payload)
-    },
+    // gatherRec: ({commit}, payload) => {
+    //   commit('gatherRecs', payload)
+    // },
     recruitPop: ({commit}, payload) => {
       commit('recruitPop', payload)
     },
@@ -138,5 +139,8 @@ export default new Vuex.Store({
         commit('time')
       }, 1000)
     }
+  },
+  modules: {
+    gather
   }
 })
