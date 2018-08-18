@@ -11,28 +11,7 @@ export default new Vuex.Store({
       days: 0,
       hrs: 0
     },
-    // resources: [
-    //   // gathered resources
-    //   [
-    //     {name: 'food', quantity: 0, icon: 'mdi-barley'},
-    //     {name: 'wood', quantity: 0, icon: 'mdi-pine-tree'},
-    //     {name: 'stone', quantity: 0, icon: 'mdi-cloud'}
-    //   ],
-    //   // // found resources
-    //   // [
-    //   //   {name: 'skin', quantity: 0, icon: 'mdi-cow'},
-    //   //   {name: 'herbs', quantity: 0, icon: 'mdi-mushroom'},
-    //   //   {name: 'ore', quantity: 0, icon: 'mdi-rhombus-medium'}
-    //   // ],
-    //   // // refined resources
-    //   // [
-    //   //   {name: 'leather', quantity: 0, icon: 'mdi-thumb-up'},
-    //   //   {name: 'metal', quantity: 0, icon: 'mdi-instapaper mdi-rotate-90'},
-    //   //   {name: 'peity', quantity: 0, icon: 'mdi-christianity'}
-    //   // ]
-    // ],
     buildings: [
-      // buildings resources
       [ // Level 1
         {name: 'farm', quantity: 0, unlocked: false},
         {name: 'sawmill', quantity: 0, unlocked: false},
@@ -51,18 +30,6 @@ export default new Vuex.Store({
 
   },
   mutations: {
-    // gatherRecs: (state, payload) => {
-    //   if (payload === 'food') {
-    //     state.resources[0][0].quantity++
-    //     // if (Math.round(Math.random() * 100) < 2) { state.resources[1][0].quantity += 1 }
-    //   } else if (payload === 'wood') {
-    //     state.resources[0][1].quantity++
-    //     // if (Math.round(Math.random() * 100) < 10) { state.resources[1][1].quantity += 1 }
-    //   } else if (payload === 'stone') {
-    //     state.resources[0][2].quantity++
-    //     // if (Math.round(Math.random() * 100) <= 1) { state.resources[1][2].quantity += 1 }
-    //   }
-    // },
     farms: state => {
       if (state.buildings[0][0].quantity >= 1) {
         state.resources[0][0].quantity += (state.buildings[0][0].quantity * 1)
@@ -99,23 +66,14 @@ export default new Vuex.Store({
         state.buildings = true
       }
     }
-    // recruitPop: (state, payload) => {
-    //   // payload is food cost
-    //   state.resources[0][0].quantity -= payload
-    //   state.people[0].quantity++
-    // }
   },
   actions: {
-    // ES6 shorten to pass only needed method through
-    // gatherRec: ({commit}, payload) => {
-    //   commit('gatherRecs', payload)
-    // },
     runGame: ({commit}) => {
       setInterval(() => {
         // commit('farms')
         // commit('sawmills')
         // commit('quarrys')
-        // commit('time')
+        commit('time')
       }, 1000)
     }
   },

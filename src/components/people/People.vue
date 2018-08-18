@@ -6,7 +6,7 @@
                 <div class="column is-paddingless-horizontal">Max Pop: {{populus.people.max}}</div>
             </div>
             <progress class="progress" :value="populus.people.quantity" :max="populus.people.max"></progress>
-            <div class="button is-fullwidth" @click.self="recruitPop()"> Accept People to Kingdom | <i class="mdi mdi-barley"></i> 10</div>
+            <div class="button is-fullwidth" @click.self="recruitPop({type:0, amount:10})"> Accept People to Kingdom | <i class="mdi mdi-barley"></i> 10</div>
         </div>
         <div>
             <div>
@@ -17,9 +17,9 @@
                 style="align-items:center;"
                 v-for="unit in populus.population[0]"
                 :key="unit.name">
-                    <div class="column is-narrow is-size-3 is-paddingless">-</div>
+                    <div class="column is-narrow is-size-3 is-paddingless"><i class="mdi mdi-minus-box"></i></div>
                     <div class="column is-expanded is-paddingless">{{unit.name}}</div>
-                    <div class="column is-narrow is-size-3 is-paddingless">+</div>
+                    <div class="column is-narrow is-size-3 is-paddingless"><i class="mdi mdi-plus-box"></i></div>
                 </div>
             </div>
             <div class="columns is-mobile is-multiline is-marginless-bot" v-show="!citizenToggle">
@@ -27,9 +27,9 @@
                 style="align-items:center;"
                 v-for="specialty in populus.population[1]"
                 :key="specialty.name">
-                    <div class="column is-narrow is-size-3 is-paddingless">-</div>
+                    <div class="column is-narrow is-size-3 is-paddingless"><i class="mdi mdi-minus-box"></i></div>
                     <div class="column is-expanded is-paddingless">{{specialty.name}}</div>
-                    <div class="column is-narrow is-size-3 is-paddingless">+</div>
+                    <div class="column is-narrow is-size-3 is-paddingless"><i class="mdi mdi-plus-box"></i></div>
                 </div>
             </div>
         </div>

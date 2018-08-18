@@ -23,16 +23,15 @@ const state = {
 }
 
 const mutations = {
-  recruitPop: (state) => {
-    // payload is food cost
-    // state.resources[0][0].quantity -= payload
+  'RECRUIT_POP': (state) => {
     state.people.quantity += 1
   }
 }
 
 const actions = {
-  recruitPop: ({commit}) => {
-    commit('recruitPop')
+  recruitPop: ({commit}, payload) => {
+    commit('RECRUIT_POP')
+    commit('USE_REC', payload) // Gather.js
   }
 }
 
