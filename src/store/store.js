@@ -31,25 +31,6 @@ export default new Vuex.Store({
     //   //   {name: 'peity', quantity: 0, icon: 'mdi-christianity'}
     //   // ]
     // ],
-    people: [
-      {name: 'people', quantity: 5, max: 10}
-    ],
-    popButton: [
-      {name: 'basic'},
-      {name: 'specialty'}
-    ],
-    population: [
-      [
-        {name: 'farmers', quantity: 0},
-        {name: 'loggers', quantity: 0},
-        {name: 'miners', quantity: 0}
-      ],
-      [
-        {name: 'driers', quantity: 0},
-        {name: 'blacksmiths', quantity: 0},
-        {name: 'priests', quantity: 0}
-      ]
-    ],
     buildings: [
       // buildings resources
       [ // Level 1
@@ -129,15 +110,12 @@ export default new Vuex.Store({
     // gatherRec: ({commit}, payload) => {
     //   commit('gatherRecs', payload)
     // },
-    recruitPop: ({commit}, payload) => {
-      commit('recruitPop', payload)
-    },
     runGame: ({commit}) => {
       setInterval(() => {
-        commit('farms')
-        commit('sawmills')
-        commit('quarrys')
-        commit('time')
+        // commit('farms')
+        // commit('sawmills')
+        // commit('quarrys')
+        // commit('time')
       }, 1000)
     }
   },

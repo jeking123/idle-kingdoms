@@ -23,7 +23,7 @@ const state = {
 }
 
 const mutations = {
-  recruitPop: (state, payload) => {
+  recruitPop: (state) => {
     // payload is food cost
     // state.resources[0][0].quantity -= payload
     state.people.quantity += 1
@@ -31,8 +31,8 @@ const mutations = {
 }
 
 const actions = {
-  recruitPop: ({commit}, payload) => {
-    commit('recruitPop', payload)
+  recruitPop: ({commit}) => {
+    commit('recruitPop')
   }
 }
 
