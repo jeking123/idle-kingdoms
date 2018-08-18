@@ -11,10 +11,10 @@
 <script>
 import { mapActions } from 'vuex'
 export default {
-    methods: {
-        ...mapActions([
-            'gatherRec'
-        ])
-    }
+  methods: {
+    ...mapActions([
+      'gatherRec'
+    ])
+  }
 }
 </script>

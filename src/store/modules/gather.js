@@ -48,8 +48,15 @@ const actions = {
   }
 }
 
+const getters = {
+  resources: state => {
+    return state.resources
+  }
+}
+
 export default {
   state,
   mutations,
-  actions
+  actions,
+  getters
 }

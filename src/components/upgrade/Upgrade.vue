@@ -8,13 +8,12 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions } from 'vuex'
 export default {
-    methods: {
-        ...mapActions([
-            'buildingUpgrade'
-        ])
-    }
+  methods: {
+    ...mapActions([
+      'buildingUpgrade'
+    ])
+  }
 }
 </script>
-

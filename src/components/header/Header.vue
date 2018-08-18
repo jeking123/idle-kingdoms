@@ -11,12 +11,11 @@
             <!-- <div v-for="t in this.$store.state.time" :key="t">{{t}}</div> -->
             {{this.$store.state.time.days}} : {{this.$store.state.time.hrs}}
           </div>
-        
         <div class="column is-narrow">
           <button class="button is-rounded is-info">
             <span class="icon">
-              <i  class="mdi mdi-24px mdi-settings" 
-                  @click="showModal = !showModal" 
+              <i  class="mdi mdi-24px mdi-settings"
+                  @click="showModal = !showModal"
               ></i>
             </span>
           </button>
@@ -32,9 +31,9 @@
 import Resources from './Resources.vue'
 import Settings from './Settings'
 export default {
-  data() {
+  data () {
     return {
-      showModal: false,
+      showModal: false
     }
   },
   components: {
@@ -43,7 +42,6 @@ export default {
   }
 }
 </script>
-
 
 <style scoped>
   .is-rounded {

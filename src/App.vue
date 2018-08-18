@@ -11,19 +11,17 @@ import Header from './components/header/Header.vue'
 import Footer from './components/Nav.vue'
 
 export default {
-  computed: {
-  },
   components: {
     appHeader: Header,
     appFooter: Footer
   },
-  mounted() {
+  mounted () {
     this.$store.dispatch('runGame')
   }
 }
 </script>
 
-<style lang="scss">
+<style>
 #app {
   overflow: hidden;
 }

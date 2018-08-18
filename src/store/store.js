@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import gather from './modules/gather'
+import people from './modules/people'
 
 Vue.use(Vuex)
 
@@ -84,7 +85,7 @@ export default new Vuex.Store({
     farms: state => {
       if (state.buildings[0][0].quantity >= 1) {
         state.resources[0][0].quantity += (state.buildings[0][0].quantity * 1)
-        if (Math.round(Math.random() * 100) < 8) {state.resources[1][0].quantity += 1 }
+        if (Math.round(Math.random() * 100) < 8) { state.resources[1][0].quantity += 1 }
       }
     },
     sawmills: state => {
@@ -116,12 +117,12 @@ export default new Vuex.Store({
         state.resources[0][2].quantity -= payload.stone
         state.buildings = true
       }
-    },
-    recruitPop: (state, payload) => {
-      // payload is food cost
-      state.resources[0][0].quantity -= payload
-      state.people[0].quantity++
     }
+    // recruitPop: (state, payload) => {
+    //   // payload is food cost
+    //   state.resources[0][0].quantity -= payload
+    //   state.people[0].quantity++
+    // }
   },
   actions: {
     // ES6 shorten to pass only needed method through
@@ -141,6 +142,7 @@ export default new Vuex.Store({
     }
   },
   modules: {
-    gather
+    gather,
+    people
   }
 })
