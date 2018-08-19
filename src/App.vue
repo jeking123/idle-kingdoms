@@ -1,15 +1,6 @@
 <template>
-<<<<<<< HEAD
-<<<<<<< HEAD
   <div id="app" class="hero is-fullheight" style="position:relative;">
-=======
-  <div id="app" class="hero is-fullheight">
->>>>>>> parent of 3b9c66a... testing the error over the whole app
-    <app-header style="position:relative;"></app-header>
-=======
-  <div id="app" class="hero is-fullheight">
     <app-header></app-header>
->>>>>>> parent of 8e5c86c... lots of updates
     <router-view class="box is-radiusless is-shadowless size-up is-marginless-bot is-paddingless-botm"></router-view>
     <app-footer class="bottom"></app-footer>
   </div>
