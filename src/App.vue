@@ -1,5 +1,9 @@
 <template>
+<<<<<<< HEAD
   <div id="app" class="hero is-fullheight" style="position:relative;">
+=======
+  <div id="app" class="hero is-fullheight">
+>>>>>>> parent of 8e5c86c... lots of updates
     <app-header></app-header>
     <router-view class="box is-radiusless is-shadowless size-up is-marginless-bot is-paddingless-botm"></router-view>
     <app-footer class="bottom"></app-footer>
