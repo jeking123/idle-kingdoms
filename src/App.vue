@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="hero is-fullheight">
-    <app-header></app-header>
+    <app-header style="position:relative;"></app-header>
     <router-view class="box is-radiusless is-shadowless size-up is-marginless-bot is-paddingless-botm"></router-view>
     <app-footer class="bottom"></app-footer>
   </div>

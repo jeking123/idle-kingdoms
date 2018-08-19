@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>The Log</h1>
-    <div v-for="item in log" :key="item.id">{{item.id}}: {{item.message}}</div>
+    <div v-for="(item, index) in log" :key="index">{{index}}: {{item.message}}</div>
   </div>
 </template>
 
