@@ -10,14 +10,14 @@ const state = {
   ],
   population: [
     [
-      {name: 'farmers', quantity: 0},
-      {name: 'loggers', quantity: 0},
-      {name: 'miners', quantity: 0}
+      {name: 'farmers', quantity: 0, max: 0},
+      {name: 'loggers', quantity: 0, max: 0},
+      {name: 'miners', quantity: 0, max: 0}
     ],
     [
-      {name: 'driers', quantity: 0},
-      {name: 'blacksmiths', quantity: 0},
-      {name: 'priests', quantity: 0}
+      {name: 'driers', quantity: 0, max: 0},
+      {name: 'blacksmiths', quantity: 0, max: 0},
+      {name: 'priests', quantity: 0, max: 0}
     ]
   ]
 }

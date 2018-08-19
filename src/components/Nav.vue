@@ -14,6 +14,9 @@
         <router-link to="/upgrade" tag="li" activeClass="is-active" class="is-size-4">
             <a class="is-paddingless-hori"><span class="icon"><i class="mdi mdi-home-plus" aria-hidden="true"></i></span></a>
         </router-link>
+        <router-link to="/log" tag="li" activeClass="is-active" class="is-size-4">
+            <a class="is-paddingless-hori"><span class="icon"><i class="mdi mdi-view-list" aria-hidden="true"></i></span></a>
+        </router-link>
     </ul>
   </div>
 </template>

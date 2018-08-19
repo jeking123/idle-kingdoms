@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import gather from './modules/gather'
 import people from './modules/people'
+import log from './modules/log'
 
 Vue.use(Vuex)
 
@@ -79,6 +80,7 @@ export default new Vuex.Store({
   },
   modules: {
     gather,
-    people
+    people,
+    log
   }
 })

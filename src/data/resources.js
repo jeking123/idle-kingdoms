@@ -14,7 +14,7 @@ export default [
   // refined resources
   [
     {name: 'leather', quantity: 0, icon: 'mdi-thumb-up'},
-    {name: 'metal', quantity: 0, icon: 'mdi-instapaper mdi-rotate-90'},
-    {name: 'peity', quantity: 0, icon: 'mdi-christianity'}
+    {name: 'peity', quantity: 0, icon: 'mdi-christianity'},
+    {name: 'metal', quantity: 0, icon: 'mdi-instapaper mdi-rotate-90'}
   ]
 ]

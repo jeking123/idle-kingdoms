@@ -2,7 +2,7 @@
   <div id="app" class="hero is-fullheight">
     <app-header></app-header>
     <router-view class="box is-radiusless is-shadowless size-up is-marginless-bot is-paddingless-botm"></router-view>
-    <app-footer></app-footer>
+    <app-footer class="bottom"></app-footer>
   </div>
 </template>
 
@@ -39,5 +39,10 @@ export default {
 }
 .box:not(:last-child) {
   margin-bottom: 0px;
+}
+.bottom {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 </style>
