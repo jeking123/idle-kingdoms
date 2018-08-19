@@ -25,25 +25,12 @@ export default new Vuex.Store({
         {name: 'temple', quantity: 0, unlocked: false},
         {name: 'hut', quantity: 0, unlocked: false}
       ]
-    ],
-    error: {
-      message: 'this is an error message, something has gone horribly wrong!',
-      name: '',
-      errorHistory: [],
-      active: false
-    }
+    ]
   },
   getters: {
-    error (state) {
-      return state.error
-    }
+
   },
   mutations: {
-    'SET_ERROR': (state, payload) => {
-      state.error.message = payload.message
-      state.error.name = payload.name
-      state.error.active = payload.active
-    },
     farms: state => {
       if (state.buildings[0][0].quantity >= 1) {
         state.resources[0][0].quantity += (state.buildings[0][0].quantity * 1)

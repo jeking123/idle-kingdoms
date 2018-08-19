@@ -1,6 +1,11 @@
 <template>
+<<<<<<< HEAD
   <div id="app" class="hero is-fullheight" style="position:relative;">
     <app-header style="position:relative;"></app-header>
+=======
+  <div id="app" class="hero is-fullheight">
+    <app-header></app-header>
+>>>>>>> parent of 8e5c86c... lots of updates
     <router-view class="box is-radiusless is-shadowless size-up is-marginless-bot is-paddingless-botm"></router-view>
     <app-footer class="bottom"></app-footer>
     <div class="box is-radiusless is-overlay" style=" background: rgba(240,5,5,.4)">

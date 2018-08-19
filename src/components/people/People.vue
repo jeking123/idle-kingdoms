@@ -9,6 +9,8 @@
             <div class="button is-fullwidth" @click.self="recruitPop({type:0, amount:10})"> Accept People to Kingdom | <i class="mdi mdi-barley"></i> 10</div>
         </div>
         <div>
+            <div>
+
               <div class="switch">
                 <input type="radio" class="switch-input" name="view" id="week" v-model="citizenToggle" :value="true" checked>
                 <label for="week" class="switch-label switch-label-off">Gatherers</label>
@@ -18,29 +20,26 @@
               </div>
                 <!-- <div v-for="popB in populus.popButton" class="button" :key="popB.name" @click="citizenToggle = !citizenToggle">{{popB.name}}</div> -->
             </div>
-        <div>
-            <transition name="fade" mode="out-in">
-              <div class="columns is-mobile is-multiline is-marginless-bot" v-if="citizenToggle" style="width:95vw;" key="gatherers">
-                  <div class="column columns is-mobile is-12 is-multiline is-marginless is-paddingless-bot has-text-centered has-text-weight-bold"
-                  style="align-items:center;"
-                  v-for="unit in populus.population[0]"
-                  :key="unit.name">
-                      <div class="column is-narrow is-size-3 is-paddingless"><i class="mdi mdi-minus-box"></i></div>
-                      <div class="column is-expanded is-paddingless is-uppercase is-size-7">{{unit.name}} |  {{unit.quantity}} / {{unit.max}}</div>
-                      <div class="column is-narrow is-size-3 is-paddingless"><i class="mdi mdi-plus-box"></i></div>
-                  </div>
-              </div>
-              <div class="columns is-mobile is-multiline is-marginless-bot" v-else style="width:95vw;" key="specialty">
-                  <div class="column columns is-mobile is-12 is-multiline is-marginless is-paddingless-bot has-text-centered has-text-weight-bold"
-                  style="align-items:center;"
-                  v-for="specialty in populus.population[1]"
-                  :key="specialty.name">
-                      <div class="column is-narrow is-size-3 is-paddingless"><i class="mdi mdi-minus-box"></i></div>
-                      <div class="column is-expanded is-paddingless is-uppercase is-size-7">{{specialty.name}} | {{specialty.quantity}} / {{specialty.max}}</div>
-                      <div class="column is-narrow is-size-3 is-paddingless"><i class="mdi mdi-plus-box"></i></div>
-                  </div>
-              </div>
-            </transition>
+            <div class="columns is-mobile is-multiline is-marginless-bot" v-show="citizenToggle" style="width:95vw;">
+                <div class="column columns is-mobile is-12 is-multiline is-marginless is-paddingless-bot has-text-centered has-text-weight-bold"
+                style="align-items:center;"
+                v-for="unit in populus.population[0]"
+                :key="unit.name">
+                    <div class="column is-narrow is-size-3 is-paddingless"><i class="mdi mdi-minus-box"></i></div>
+                    <div class="column is-expanded is-paddingless is-uppercase is-size-7">{{unit.name}} |  {{unit.quantity}} / {{unit.max}}</div>
+                    <div class="column is-narrow is-size-3 is-paddingless"><i class="mdi mdi-plus-box"></i></div>
+                </div>
+            </div>
+            <div class="columns is-mobile is-multiline is-marginless-bot" v-show="!citizenToggle" style="width:95vw;">
+                <div class="column columns is-mobile is-12 is-multiline is-marginless is-paddingless-bot has-text-centered has-text-weight-bold"
+                style="align-items:center;"
+                v-for="specialty in populus.population[1]"
+                :key="specialty.name">
+                    <div class="column is-narrow is-size-3 is-paddingless"><i class="mdi mdi-minus-box"></i></div>
+                    <div class="column is-expanded is-paddingless is-uppercase is-size-7">{{specialty.name}} | {{specialty.quantity}} / {{specialty.max}}</div>
+                    <div class="column is-narrow is-size-3 is-paddingless"><i class="mdi mdi-plus-box"></i></div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -73,22 +72,6 @@ export default {
 </script>
 
 <style scoped>
-
-/* Animation */
-
-.fade-enter-active, .fade-leave-active {
-  transition: transform .5s;
-}
-.fade-enter /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
-  transform: translateX(100%);
-}
-.fade-leave-to {
-  transform: translateX(0%);
-}
-
-/* EndAnimation*/
-
 .is-margineless-bot {
     margin-bottom: 0px;
 }
@@ -151,10 +134,10 @@ export default {
   height: 22px;
   border-radius: 3px;
   background-color: #65bd63;
-  -webkit-transition: left 0.5s ease-out;
-  -moz-transition: left 0.5s ease-out;
-  -ms-transition: left 0.5s ease-out;
-  -o-transition: left 0.5s ease-out;
-  transition: left 0.5s ease-out;
+  -webkit-transition: left 0.25s ease-out;
+  -moz-transition: left 0.25s ease-out;
+  -ms-transition: left 0.25s ease-out;
+  -o-transition: left 0.25s ease-out;
+  transition: left 0.25s ease-out;
 }
 </style>
