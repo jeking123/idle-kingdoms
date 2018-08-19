@@ -24,6 +24,16 @@
     <div class="">
         <app-resources></app-resources>
     </div>
+    <div class="box is-radiusless is-overlay" style=" background: rgba(240,5,5,.4)">
+      <div class="hero">
+        <div class="has-text-dark hero-body is-paddingless-hori">
+          <div class="message message-header is-white has-text-dark is-fullwidth" style="width:100%;">
+            <p>this is an error</p>
+            <button class="delete" aria-label="delete"></button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -50,5 +60,9 @@ export default {
   }
   .box {
     padding-bottom: 0px;
+  }
+  .is-paddingless-hori {
+    padding-left:0px;
+    padding-right:0px;
   }
 </style>
