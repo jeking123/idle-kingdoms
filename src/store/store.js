@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import gather from './modules/gather'
 import people from './modules/people'
 import log from './modules/log'
+import error from './modules/error'
 
 Vue.use(Vuex)
 
@@ -25,18 +26,10 @@ export default new Vuex.Store({
         {name: 'temple', quantity: 0, unlocked: false},
         {name: 'hut', quantity: 0, unlocked: false}
       ]
-    ],
-    error: {
-      message: 'this is an error message, something has gone horribly wrong!',
-      name: '',
-      errorHistory: [],
-      active: false
-    }
+    ]
   },
   getters: {
-    error (state) {
-      return state.error
-    }
+
   },
   mutations: {
     'SET_ERROR': (state, payload) => {
@@ -94,6 +87,7 @@ export default new Vuex.Store({
   modules: {
     gather,
     people,
-    log
+    log,
+    error
   }
 })

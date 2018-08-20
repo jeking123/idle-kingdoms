@@ -5,7 +5,7 @@
       <app-settings ></app-settings>
     </div>
 
-    <header class="box is-radiusless has-background-white-ter columns is-mobile" style="justify-content:space-between; align-items:center;">
+    <header class="box is-radiusless has-background-white-ter columns is-mobile" style="justify-content:space-between; align-items:center; padding-bottom:0px;">
           <h1 class="column has-text-weight-bold is-size-5 is-narrow">Idle Kingdoms</h1>
           <div class="column is-narrow">
             <!-- <div v-for="t in this.$store.state.time" :key="t">{{t}}</div> -->
@@ -24,16 +24,21 @@
     <div class="">
         <app-resources></app-resources>
     </div>
-    <div class="box is-radiusless is-overlay" style=" background: rgba(240,5,5,.4)">
-      <div class="hero">
-        <div class="has-text-dark hero-body is-paddingless-hori">
-          <div class="message message-header is-white has-text-dark is-fullwidth" style="width:100%;">
-            <p>this is an error</p>
-            <button class="delete" aria-label="delete"></button>
+    <!-- <div class="box is-radiusless is-overlay" style="background: rgba(240,5,5,0)">
+      <div class="" style="display:flex; justify-content:space-around;">
+        <div class="has-text-dark is-paddingless-hori">
+          <div class="message is-danger has-text-dark is-fullwidth is-size-7" style="width:100%;">
+            <div class="message-header">
+              <p>{{error.name}}</p>
+              <button class="delete" aria-label="delete"></button>
+            </div>
+            <div class="message-body">
+             <p>{{error.message}}</p>
+          </div>
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -44,6 +49,11 @@ export default {
   data () {
     return {
       showModal: false
+    }
+  },
+  computed: {
+    error () {
+      return this.$store.getters.error
     }
   },
   components: {

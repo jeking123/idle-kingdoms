@@ -1,9 +1,9 @@
 <template>
     <div>
         <div>
-            <div class="columns is-mobile is-margineless-bot">
+            <div class="columns is-mobile is-margineless-bot" style="margin-top:0px;">
                 <div class="column is-paddingless-horizontal">Current Pop: {{populus.people.quantity}}</div>
-                <div class="column is-paddingless-horizontal">Max Pop: {{populus.people.max}}</div>
+                <div class="column is-paddingless-horizontal has-text-right">Max Pop: {{populus.people.max}}</div>
             </div>
             <progress class="progress" :value="populus.people.quantity" :max="populus.people.max"></progress>
             <div class="button is-fullwidth" @click.self="recruitPop({type:0, amount:10})"> Accept People to Kingdom | <i class="mdi mdi-barley"></i> 10</div>
@@ -61,6 +61,8 @@ export default {
       var resource = this.$store.getters.resources[0][0].quantity
       if (resource >= 10) {
         this.$store.dispatch('recruitPop', payload)
+      } else {
+        this.$store.dispatch('setError', 1)
       }
     }
   },

@@ -1,8 +1,23 @@
 <template>
-  <div id="app" class="hero is-fullheight">
-    <app-header style="position:relative;"></app-header>
+  <div id="app" class="hero is-fullheight" style="position:relative;">
+    <app-header></app-header>
     <router-view class="box is-radiusless is-shadowless size-up is-marginless-bot is-paddingless-botm"></router-view>
     <app-footer class="bottom"></app-footer>
+    <div class="box is-radiusless is-overlay overlay-style" v-if="error.active">
+      <div>
+        <div class="has-text-dark is-paddingless-hori">
+          <div class="message is-danger has-text-dark is-fullwidth is-size-7" style="width:100%;">
+            <div class="message-header">
+              <p>{{error.name}}</p>
+              <button class="delete" aria-label="delete" @click="deactivateError"></button>
+            </div>
+            <div class="message-body">
+             <p>{{error.message}}</p>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -11,6 +26,16 @@ import Header from './components/header/Header.vue'
 import Footer from './components/Nav.vue'
 
 export default {
+  methods: {
+    deactivateError () {
+      this.$store.dispatch('deactivateError')
+    }
+  },
+  computed: {
+    error () {
+      return this.$store.getters.error
+    }
+  },
   components: {
     appHeader: Header,
     appFooter: Footer
@@ -43,6 +68,16 @@ export default {
 .bottom {
   position: absolute;
   bottom: 0;
+  margin: 0px !important;
   width: 100%;
+}
+.overlay-style {
+  height: 100vh;
+  padding-top:0px;
+  background: rgba(5,5,5,.9);
+  display:flex;
+  align-items:center;
+  justify-content: center;
+  z-index:50;
 }
 </style>
