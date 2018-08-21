@@ -3,7 +3,7 @@ const state = {
     message: 'this is an error message, something has gone horribly wrong!',
     name: 'Recruit',
     errorHistory: [],
-    active: true
+    active: false
   }
 }
 

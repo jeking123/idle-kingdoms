@@ -25,6 +25,42 @@ const state = {
 const mutations = {
   'RECRUIT_POP': (state) => {
     state.people.quantity += 1
+  },
+  'POP_INCREASE': (state, payload) => {
+    switch (payload) {
+      case 'farmers':
+        state.population[0][0].quantity++
+        break
+      case 'loggers':
+        state.population[0][1].quantity++
+        break
+      case 'miners':
+        state.population[0][2].quantity++
+    }
+  },
+  'POP_DECREASE': (state, payload) => {
+    switch (payload) {
+      case 'farmers':
+        state.population[0][0].quantity--
+        break
+      case 'loggers':
+        state.population[0][1].quantity--
+        break
+      case 'miners':
+        state.population[0][2].quantity--
+    }
+  },
+  'MAX_POP_INCREASE': (state, payload) => {
+    switch (payload) {
+      case 'farmers':
+        state.population[0][0].max += 5
+        break
+      case 'loggers':
+        state.population[0][1].max += 5
+        break
+      case 'miners':
+        state.population[0][2].max += 5
+    }
   }
 }
 
@@ -32,6 +68,9 @@ const actions = {
   recruitPop: ({commit}, payload) => {
     commit('RECRUIT_POP')
     commit('USE_REC', payload) // Gather.js
+  },
+  popIncrease: ({commit}, payload) => {
+    commit('POP_INCREASE', payload)
   }
 }
 

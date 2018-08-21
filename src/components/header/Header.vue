@@ -12,7 +12,7 @@
             {{this.$store.state.time.days}} : {{this.$store.state.time.hrs}}
           </div>
         <div class="column is-narrow">
-          <button class="button is-rounded is-info">
+          <button class="button is-rounded is-link">
             <span class="icon">
               <i  class="mdi mdi-24px mdi-settings"
                   @click="showModal = !showModal"

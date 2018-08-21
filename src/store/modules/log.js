@@ -1,10 +1,11 @@
 const state = {
   log: [
-    {id: 0, message: 'mistakes'},
-    {id: 1, message: 'problems'}
+    {message: 'mistakes'},
+    {message: 'problems'}
   ]
 }
 
+// at some point, Update the log code with a switch of different options
 const mutations = {
   'SET_LOG': (state, payload) => {
     state.log.push(payload)
@@ -13,7 +14,7 @@ const mutations = {
 
 const actions = {
   setLog: ({commit}, payload) => {
-    commit('SET_LOG', payload)
+    commit('SET_LOG', {message: payload.message})
   }
 }
 

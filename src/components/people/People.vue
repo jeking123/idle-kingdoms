@@ -9,16 +9,17 @@
             <div class="button is-fullwidth" @click.self="recruitPop({type:0, amount:10})"> Accept People to Kingdom | <i class="mdi mdi-barley"></i> 10</div>
         </div>
         <div>
-              <div class="switch">
+              <div class="switch has-background-grey-dark has-text-white">
                 <input type="radio" class="switch-input" name="view" id="week" v-model="citizenToggle" :value="true" checked>
                 <label for="week" class="switch-label switch-label-off">Gatherers</label>
                 <input type="radio" class="switch-input" name="view" v-model="citizenToggle" :value="false" id="month">
                 <label for="month" class="switch-label switch-label-on">Specialists</label>
-                <span class="switch-selection"></span>
+                <span class="switch-selection has-background-link"></span>
               </div>
                 <!-- <div v-for="popB in populus.popButton" class="button" :key="popB.name" @click="citizenToggle = !citizenToggle">{{popB.name}}</div> -->
             </div>
         <div>
+          <!-- Refactor this to components for simplicity -->
             <transition name="fade" mode="out-in">
               <div class="columns is-mobile is-multiline is-marginless-bot" v-if="citizenToggle" style="width:95vw;" key="gatherers">
                   <div class="column columns is-mobile is-12 is-multiline is-marginless is-paddingless-bot has-text-centered has-text-weight-bold"
@@ -35,7 +36,7 @@
                   style="align-items:center;"
                   v-for="specialty in populus.population[1]"
                   :key="specialty.name">
-                      <div class="column is-narrow is-size-3 is-paddingless"><i class="mdi mdi-minus-box"></i></div>
+                      <div class="column is-narrow is-size-3 is-paddingless" @click="" ><i class="mdi mdi-minus-box"></i></div>
                       <div class="column is-expanded is-paddingless is-uppercase is-size-7">{{specialty.name}} | {{specialty.quantity}} / {{specialty.max}}</div>
                       <div class="column is-narrow is-size-3 is-paddingless"><i class="mdi mdi-plus-box"></i></div>
                   </div>
@@ -110,6 +111,7 @@ export default {
   height: 26px;
   width: 100%;
   margin: 10px auto;
+  border-radius: 6px;
 }
 
 .switch-label {

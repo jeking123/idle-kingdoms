@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import gather from './modules/gather'
 import people from './modules/people'
+import build from './modules/build'
 import log from './modules/log'
 import error from './modules/error'
 
@@ -12,21 +13,7 @@ export default new Vuex.Store({
     time: {
       days: 0,
       hrs: 0
-    },
-    buildings: [
-      [ // Level 1
-        {name: 'farm', quantity: 0, unlocked: false},
-        {name: 'sawmill', quantity: 0, unlocked: false},
-        {name: 'quarry', quantity: 0, unlocked: false},
-        {name: 'tent', quantity: 0, unlocked: false}
-      ],
-      [ // Level 2
-        {name: 'drying racks', quantity: 0, unlocked: false},
-        {name: 'smithy', quantity: 0, unlocked: false},
-        {name: 'temple', quantity: 0, unlocked: false},
-        {name: 'hut', quantity: 0, unlocked: false}
-      ]
-    ]
+    }
   },
   getters: {
 
@@ -87,6 +74,7 @@ export default new Vuex.Store({
   modules: {
     gather,
     people,
+    build,
     log,
     error
   }

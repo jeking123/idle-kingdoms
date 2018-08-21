@@ -6,7 +6,13 @@
 </template>
 
 <script>
+import {mapActions} from 'vuex'
 export default {
+  methods: {
+    ...mapActions([
+      'setLog'
+    ])
+  },
   computed: {
     log () {
       return this.$store.getters.log
