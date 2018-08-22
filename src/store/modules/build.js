@@ -1,30 +1,30 @@
 const state = {
-  buildings: [
-    [ // Level 1
-      {name: 'farm', quantity: 0, max: 0, unlocked: false},
-      {name: 'sawmill', quantity: 0, max: 0, unlocked: false},
-      {name: 'quarry', quantity: 0, max: 0, unlocked: false},
-      {name: 'tent', quantity: 0, max: 0, unlocked: false}
+  buildings: {
+    lvl1: [ // Level 1
+      {name: 'farm', worker: 'farmers', quantity: 0, max: 0, unlocked: false, cost: {food: 1, wood: 1, stone: 1}},
+      {name: 'sawmill', worker: 'loggers', quantity: 0, max: 0, unlocked: false, cost: {food: 1, wood: 1, stone: 1}},
+      {name: 'quarry', worker: 'miners', quantity: 0, max: 0, unlocked: false, cost: {food: 1, wood: 1, stone: 1}},
+      {name: 'tent', worker: 'peoples', quantity: 0, max: 0, unlocked: false, cost: {food: 1, wood: 1, stone: 1}}
     ],
-    [ // Level 2
-      {name: 'drying racks', quantity: 0, max: 0, unlocked: false},
-      {name: 'smithy', quantity: 0, max: 0, unlocked: false},
-      {name: 'temple', quantity: 0, max: 0, unlocked: false},
-      {name: 'hut', quantity: 0, max: 0, unlocked: false}
+    lvl2: [ // Level 2
+      {name: 'drying racks', worker: 'driers', quantity: 0, max: 0, unlocked: false, cost: {food: 1, wood: 1, stone: 1}},
+      {name: 'smithy', worker: 'blacksmiths', quantity: 0, max: 0, unlocked: false, cost: {food: 1, wood: 1, stone: 1}},
+      {name: 'temple', worker: 'priests', quantity: 0, max: 0, unlocked: false, cost: {food: 1, wood: 1, stone: 1}},
+      {name: 'hut', worker: 'peoples', quantity: 0, max: 0, unlocked: false, cost: {food: 1, wood: 1, stone: 1}}
     ],
-    [ // Level 3
-      {name: 'one', quantity: 0, max: 0, unlocked: false},
-      {name: 'two', quantity: 0, max: 0, unlocked: false},
-      {name: 'temple', quantity: 0, max: 0, unlocked: false},
-      {name: 'hut', quantity: 0, max: 0, unlocked: false}
+    lvl3: [ // Level 3
+      {name: 'one', worker: 'farmer', quantity: 0, max: 0, unlocked: false, cost: {food: 1, wood: 1, stone: 1}},
+      {name: 'two', worker: 'farmer', quantity: 0, max: 0, unlocked: false, cost: {food: 1, wood: 1, stone: 1}},
+      {name: 'temple', worker: 'farmer', quantity: 0, max: 0, unlocked: false, cost: {food: 1, wood: 1, stone: 1}},
+      {name: 'hut', worker: 'farmer', quantity: 0, max: 0, unlocked: false, cost: {food: 1, wood: 1, stone: 1}}
     ],
-    [ // Level 4
-      {name: 'two', quantity: 0, max: 0, unlocked: false},
-      {name: 'one', quantity: 0, max: 0, unlocked: false},
-      {name: 'temple', quantity: 0, max: 0, unlocked: false},
-      {name: 'hut', quantity: 0, max: 0, unlocked: false}
+    lvl4: [ // Level 4
+      {name: 'two', worker: 'farmer', quantity: 0, max: 0, unlocked: false, cost: {food: 1, wood: 1, stone: 1}},
+      {name: 'one', worker: 'farmer', quantity: 0, max: 0, unlocked: false, cost: {food: 1, wood: 1, stone: 1}},
+      {name: 'temple', worker: 'farmer', quantity: 0, max: 0, unlocked: false, cost: {food: 1, wood: 1, stone: 1}},
+      {name: 'hut', worker: 'farmer', quantity: 0, max: 0, unlocked: false, cost: {food: 1, wood: 1, stone: 1}}
     ]
-  ],
+  },
   buttons: [
 
   ]
@@ -32,33 +32,34 @@ const state = {
 
 const mutations = {
   'INCR_BLD': (state, payload) => {
+    console.log(payload)
     switch (payload) {
       case 'farm':
-        state.buildings[0][0].quantity++
+        state.buildings.lvl1[0].quantity++
         break
       case 'sawmill':
-        state.buildings[0][1].quantity++
+        state.buildings.lvl1[1].quantity++
         break
       case 'quarry':
-        state.buildings[0][2].quantity++
+        state.buildings.lvl1[2].quantity++
         break
       case 'tent':
-        state.buildings[0][3].quantity++
+        state.buildings.lvl1[3].quantity++
     }
   },
   'DEC_BLD': (state, payload) => {
     switch (payload) {
       case 'farm':
-        state.buildings[0][0].quantity--
+        state.buildings.lvl1[0].quantity--
         break
       case 'sawmill':
-        state.buildings[0][1].quantity--
+        state.buildings.lvl1[1].quantity--
         break
       case 'quarry':
-        state.buildings[0][2].quantity--
+        state.buildings.lvl1[2].quantity--
         break
       case 'tent':
-        state.buildings[0][3].quantity--
+        state.buildings.lvl1[3].quantity--
     }
   }
 }
@@ -66,6 +67,9 @@ const mutations = {
 const actions = {
   incrBld: ({commit}, payload) => {
     commit('INCR_BLD', payload)
+  },
+  decBld: ({commit}, payload) => {
+    commit('DEC_BLD', payload)
   }
 }
 

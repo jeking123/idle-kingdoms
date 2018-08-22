@@ -71,6 +71,12 @@ const actions = {
   },
   popIncrease: ({commit}, payload) => {
     commit('POP_INCREASE', payload)
+  },
+  popDecrease: ({commit}, payload) => {
+    commit('POP_DECREASE', payload)
+  },
+  maxPopIncrease: ({commit}, payload) => {
+    commit('MAX_POP_INCREASE', payload)
   }
 }
 

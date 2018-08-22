@@ -12,8 +12,10 @@
               <div class="switch has-background-grey-dark has-text-white">
                 <input type="radio" class="switch-input" name="view" id="week" v-model="citizenToggle" :value="true" checked>
                 <label for="week" class="switch-label switch-label-off">Gatherers</label>
-                <input type="radio" class="switch-input" name="view" v-model="citizenToggle" :value="false" id="month">
-                <label for="month" class="switch-label switch-label-on">Specialists</label>
+                <template>
+                  <input type="radio" class="switch-input" name="view" v-model="citizenToggle" :value="false" id="month">
+                  <label for="month" class="switch-label switch-label-on">Specialists</label>
+                </template>
                 <span class="switch-selection has-background-link"></span>
               </div>
                 <!-- <div v-for="popB in populus.popButton" class="button" :key="popB.name" @click="citizenToggle = !citizenToggle">{{popB.name}}</div> -->
@@ -26,9 +28,9 @@
                   style="align-items:center;"
                   v-for="unit in populus.population[0]"
                   :key="unit.name">
-                      <div class="column is-narrow is-size-3 is-paddingless"><i class="mdi mdi-minus-box"></i></div>
+                      <div class="column is-narrow is-size-3 is-paddingless" @click="popDecrease(unit)" ><i class="mdi mdi-minus-box"></i></div>
                       <div class="column is-expanded is-paddingless is-uppercase is-size-7">{{unit.name}} |  {{unit.quantity}} / {{unit.max}}</div>
-                      <div class="column is-narrow is-size-3 is-paddingless"><i class="mdi mdi-plus-box"></i></div>
+                      <div class="column is-narrow is-size-3 is-paddingless" @click="popIncrease(unit)"><i class="mdi mdi-plus-box"></i></div>
                   </div>
               </div>
               <div class="columns is-mobile is-multiline is-marginless-bot" v-else style="width:95vw;" key="specialty">
@@ -36,9 +38,9 @@
                   style="align-items:center;"
                   v-for="specialty in populus.population[1]"
                   :key="specialty.name">
-                      <div class="column is-narrow is-size-3 is-paddingless" @click="" ><i class="mdi mdi-minus-box"></i></div>
+                      <div class="column is-narrow is-size-3 is-paddingless" @click="popDecrease(specialty)" ><i class="mdi mdi-minus-box"></i></div>
                       <div class="column is-expanded is-paddingless is-uppercase is-size-7">{{specialty.name}} | {{specialty.quantity}} / {{specialty.max}}</div>
-                      <div class="column is-narrow is-size-3 is-paddingless"><i class="mdi mdi-plus-box"></i></div>
+                      <div class="column is-narrow is-size-3 is-paddingless" @click="popIncrease(specialty)"><i class="mdi mdi-plus-box"></i></div>
                   </div>
               </div>
             </transition>
@@ -47,23 +49,33 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 export default {
   data () {
     return {
-      citizenToggle: false
+      citizenToggle: true
     }
   },
   methods: {
-    ...mapGetters([
-      'population'
-    ]),
     recruitPop (payload) {
       var resource = this.$store.getters.resources[0][0].quantity
       if (resource >= 10) {
         this.$store.dispatch('recruitPop', payload)
       } else {
         this.$store.dispatch('setError', 1)
+      }
+    },
+    popIncrease (payload) {
+      if (payload.quantity <= (payload.max - 1)) {
+        this.$store.dispatch('popIncrease', payload.name)
+      } else {
+        this.$store.dispatch('setError', 2)
+      }
+    },
+    popDecrease (payload) {
+      if (payload.quantity > 0) {
+        this.$store.dispatch('popDecrease', payload.name)
+      } else {
+        this.$store.dispatch('setError', 3)
       }
     }
   },

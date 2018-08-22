@@ -49,6 +49,9 @@ const actions = {
   },
   gatherRec: ({commit}, payload) => {
     commit('GATHER_REC', payload)
+  },
+  useRec: ({commit}, payload) => {
+    commit('USE_REC', payload)
   }
 }
 

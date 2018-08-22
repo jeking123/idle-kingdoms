@@ -5,7 +5,7 @@
               <li class="" @click="setShowBuild(0)" :class="{'is-active': showBuild == 'lvl1'}"><a>
                   <span>LVL1</span>
                 </a></li>
-              <li class="" @click="setShowBuild(1)" :class="{'is-active': showBuild == 'lvl2'}"><a>
+              <li class="" @click="setShowBuild(1)" :class="{'is-active': showBuild == 'lvl2'}" disabled><a>
                   <span>LVL2</span>
                 </a></li>
               <li class="" @click="setShowBuild(2)" :class="{'is-active': showBuild == 'lvl3'}"><a>
@@ -17,46 +17,30 @@
             </ul>
           </div>
         <div>
-          <!-- Refactor this to Components for simplicity -->
             <transition name="fade" mode="out-in">
-              <div class="columns is-mobile is-multiline is-marginless-bot" v-if="showBuild === 'lvl1'" style="width:95vw;" key="lvl1">
-                  <div class="column columns is-mobile is-12 is-multiline is-marginless is-paddingless-bot has-text-centered has-text-weight-bold"
-                  style="align-items:center;"
-                  v-for="building1 in build.buildings[0]"
-                  :key="building1.name">
-                      <div class="column is-narrow is-size-3 is-paddingless"><i class="mdi mdi-minus-box"></i></div>
-                      <div class="column is-expanded is-paddingless is-uppercase is-size-7">{{building1.name}} |  {{building1.quantity}}</div>
-                      <div class="column is-narrow is-size-3 is-paddingless"><i class="mdi mdi-plus-box"></i></div>
-                  </div>
-              </div>
-              <div class="columns is-mobile is-multiline is-marginless-bot" v-else-if="showBuild === 'lvl2'" style="width:95vw;" key="lvl2">
-                  <div class="column columns is-mobile is-12 is-multiline is-marginless is-paddingless-bot has-text-centered has-text-weight-bold"
-                  style="align-items:center;"
-                  v-for="building2 in build.buildings[1]"
-                  :key="building2.name">
-                      <div class="column is-narrow is-size-3 is-paddingless"><i class="mdi mdi-minus-box"></i></div>
-                      <div class="column is-expanded is-paddingless is-uppercase is-size-7">{{building2.name}} | {{building2.quantity}}</div>
-                      <div class="column is-narrow is-size-3 is-paddingless"><i class="mdi mdi-plus-box"></i></div>
-                  </div>
-              </div>
-              <div class="columns is-mobile is-multiline is-marginless-bot" v-else-if="showBuild === 'lvl3'" style="width:95vw;" key="lvl3">
-                  <div class="column columns is-mobile is-12 is-multiline is-marginless is-paddingless-bot has-text-centered has-text-weight-bold"
-                  style="align-items:center;"
-                  v-for="building3 in build.buildings[2]"
-                  :key="building3.name">
-                      <div class="column is-narrow is-size-3 is-paddingless"><i class="mdi mdi-minus-box"></i></div>
-                      <div class="column is-expanded is-paddingless is-uppercase is-size-7">{{building3.name}} | {{building3.quantity}}</div>
-                      <div class="column is-narrow is-size-3 is-paddingless"><i class="mdi mdi-plus-box"></i></div>
-                  </div>
-              </div>
-              <div class="columns is-mobile is-multiline is-marginless-bot" v-else-if="showBuild === 'lvl4'" style="width:95vw;" key="lvl4">
-                  <div class="column columns is-mobile is-12 is-multiline is-marginless is-paddingless-bot has-text-centered has-text-weight-bold"
-                  style="align-items:center;"
-                  v-for="building3 in build.buildings[3]"
-                  :key="building3.name">
-                      <div class="column is-narrow is-size-3 is-paddingless"><i class="mdi mdi-minus-box"></i></div>
-                      <div class="column is-expanded is-paddingless is-uppercase is-size-7">{{building3.name}} | {{building3.quantity}}</div>
-                      <div class="column is-narrow is-size-3 is-paddingless"><i class="mdi mdi-plus-box"></i></div>
+              <div class="columns is-mobile is-multiline is-marginless-bot"
+                   v-for="(lvl, key) in build.buildings"
+                   v-if="showBuild == key"
+                   :key="key"
+                   style="width:95vw;"
+              >
+                    <div class="column columns is-mobile is-12 is-multiline is-marginless is-paddingless-bot has-text-weight-bold"
+                         style="align-items:center;"
+                         v-for="building in lvl"
+                         :key="building.name"
+                    >
+                      <!-- <div class="column is-narrow is-size-3 is-paddingless"
+                           @click="decBld(building, resources)">
+                        <i class="mdi mdi-minus-box"></i>
+                      </div> -->
+                      <div class="column is-expanded is-paddingless is-uppercase is-size-7 bldCost">
+                        {{building.name}} | <i class="mdi mdi-barley">{{building.cost.food}} </i> <i class="mdi mdi-pine-tree">{{building.cost.wood}} </i> <i class="mdi mdi-cloud">{{building.cost.stone}} </i>
+                      </div>
+                      <div class="column is-narrow is-paddingless is-size-7"> {{building.quantity}} </div>
+                      <div class="column is-narrow is-size-3 is-paddingless"
+                           @click="incrBld(building, resources)">
+                        <i class="mdi mdi-plus-box"></i>
+                      </div>
                   </div>
               </div>
             </transition>
@@ -72,6 +56,27 @@ export default {
     }
   },
   methods: {
+    incrBld (payload, resources) {
+      var food = resources[0][0].quantity
+      var wood = resources[0][1].quantity
+      var stone = resources[0][2].quantity
+
+      var foodCost = payload.cost.food
+      var woodCost = payload.cost.wood
+      var stoneCost = payload.cost.stone
+      if (food >= foodCost && wood >= woodCost && stone >= stoneCost) {
+        this.$store.dispatch('incrBld', payload.name)
+        this.$store.dispatch('maxPopIncrease', payload.worker)
+        this.$store.dispatch('useRec', {type: 0, amount: foodCost})
+        this.$store.dispatch('useRec', {type: 1, amount: woodCost})
+        this.$store.dispatch('useRec', {type: 2, amount: stoneCost})
+      } else {
+        this.$store.dispatch('setError', 1)
+      }
+    },
+    decBld (payload) {
+      this.$store.dispatch('decBld', payload.name)
+    },
     setShowBuild (payload) {
       switch (payload) {
         case 0:
@@ -91,6 +96,9 @@ export default {
   computed: {
     build () {
       return this.$store.getters.buildings
+    },
+    resources () {
+      return this.$store.getters.resources
     }
   }
 }
@@ -109,5 +117,8 @@ export default {
 }
 .citizenToggle {
     display: none;
+}
+.bldCost i {
+  margin-right: 7px;
 }
 </style>

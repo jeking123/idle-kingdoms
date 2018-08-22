@@ -20,8 +20,16 @@ const mutations = {
         state.error.name = 'error'
         break
       case 1:
-        state.error.name = 'Recruit'
+        state.error.name = 'Resources'
         state.error.message = 'Not Enough Resources'
+        break
+      case 2:
+        state.error.name = 'Buildings'
+        state.error.message = 'No more space for workers'
+        break
+      case 3:
+        state.error.name = 'Workers'
+        state.error.message = 'No More Workers'
         break
     }
   },
