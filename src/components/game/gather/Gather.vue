@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>gather resources</h1>
+        <h1>Gather Resources</h1>
         <div>
             <button class="button" @click="gatherRec({type: 0, amount: 1})"><i class="mdi mdi-barley"></i> food</button>
             <button class="button" @click="gatherRec({type: 1, amount: 1})"><i class="mdi mdi-pine-tree"></i>wood</button>

@@ -2,6 +2,7 @@ const state = {
   people: {
     name: 'people',
     quantity: 0,
+    assigned: 0,
     max: 10
   },
   popButton: [
@@ -30,24 +31,33 @@ const mutations = {
     switch (payload) {
       case 'farmers':
         state.population[0][0].quantity++
+        state.people.assigned++
         break
       case 'loggers':
         state.population[0][1].quantity++
+        state.people.assigned++
         break
       case 'miners':
         state.population[0][2].quantity++
+        state.people.assigned++
+        break
+      case 'people':
+        state.people.quantity++
     }
   },
   'POP_DECREASE': (state, payload) => {
     switch (payload) {
       case 'farmers':
         state.population[0][0].quantity--
+        state.people.assigned--
         break
       case 'loggers':
         state.population[0][1].quantity--
+        state.people.assigned--
         break
       case 'miners':
         state.population[0][2].quantity--
+        state.people.assigned--
     }
   },
   'MAX_POP_INCREASE': (state, payload) => {
@@ -60,6 +70,9 @@ const mutations = {
         break
       case 'miners':
         state.population[0][2].max += 5
+        break
+      case 'people':
+        state.people.max += 3
     }
   }
 }

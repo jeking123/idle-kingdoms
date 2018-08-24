@@ -31,6 +31,10 @@ const mutations = {
         state.error.name = 'Workers'
         state.error.message = 'No More Workers'
         break
+      case 4:
+        state.error.name = 'Resources'
+        state.error.message = 'Not enough Resources'
+        break
     }
   },
   'DEACTIVATE_ERR': (state) => {

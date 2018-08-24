@@ -8,16 +8,6 @@ const mutations = {
     state.resources = resources
   },
   'GATHER_REC': (state, payload) => {
-    // if (payload === 'food') {
-    //   state.resources[0][0].quantity++
-    //   // if (Math.round(Math.random() * 100) < 2) { state.resources[1][0].quantity += 1 }
-    // } else if (payload === 'wood') {
-    //   state.resources[0][1].quantity++
-    //   // if (Math.round(Math.random() * 100) < 10) { state.resources[1][1].quantity += 1 }
-    // } else if (payload === 'stone') {
-    //   state.resources[0][2].quantity++
-    //   // if (Math.round(Math.random() * 100) <= 1) { state.resources[1][2].quantity += 1 }
-    // }
     switch (payload.type) {
       case 0: // food
         state.resources[0][0].quantity += payload.amount

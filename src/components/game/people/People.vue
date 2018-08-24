@@ -2,11 +2,11 @@
     <div>
         <div>
             <div class="columns is-mobile is-margineless-bot" style="margin-top:0px;">
-                <div class="column is-paddingless-horizontal">Current Pop: {{populus.people.quantity}}</div>
-                <div class="column is-paddingless-horizontal has-text-right">Max Pop: {{populus.people.max}}</div>
+                <div class="column is-paddingless-horizontal">Workers {{populus.people.assigned}}</div>
+                <div class="column is-paddingless-horizontal has-text-right">Populus {{populus.people.quantity}}/{{populus.people.max}}</div>
             </div>
             <progress class="progress" :value="populus.people.quantity" :max="populus.people.max"></progress>
-            <div class="button is-fullwidth" @click.self="recruitPop({type:0, amount:10})"> Accept People to Kingdom | <i class="mdi mdi-barley"></i> 10</div>
+            <div class="button is-fullwidth" @click.self="recruitPop({type:0, amount:1})"> Accept People to Kingdom | <i class="mdi mdi-barley"></i> 10</div>
         </div>
         <div>
               <div class="switch has-background-grey-dark has-text-white">
@@ -58,19 +58,25 @@ export default {
   methods: {
     recruitPop (payload) {
       var resource = this.$store.getters.resources[0][0].quantity
-      if (resource >= 10) {
+      var pop = this.$store.getters.population
+      if (resource >= 1 && pop.people.quantity <= (pop.people.max - 1)) {
         this.$store.dispatch('recruitPop', payload)
+        // this.$store.dispatch('useRec', payload)
       } else {
         this.$store.dispatch('setError', 1)
       }
     },
+    // assign workers
     popIncrease (payload) {
-      if (payload.quantity <= (payload.max - 1)) {
+      var populus = this.$store.getters.population
+      // console.log(payload.name)
+      if (payload.quantity <= (payload.max - 1) && populus.people.assigned <= (populus.people.quantity - 1)) {
         this.$store.dispatch('popIncrease', payload.name)
       } else {
         this.$store.dispatch('setError', 2)
       }
     },
+    // un assigne workers
     popDecrease (payload) {
       if (payload.quantity > 0) {
         this.$store.dispatch('popDecrease', payload.name)
