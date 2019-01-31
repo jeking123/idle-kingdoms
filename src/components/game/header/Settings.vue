@@ -2,7 +2,6 @@
   <div class="modal-card">
         <header class="modal-card-head">
           <p class="modal-card-title">settings</p>
-          <button class="delete" aria-label="close" @click="showModal = !showModal"></button>
         </header>
         <section class="modal-card-body">
           <!-- Content ... -->

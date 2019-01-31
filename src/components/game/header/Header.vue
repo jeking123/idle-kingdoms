@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="modal" :class="{'is-active': showModal}">
-      <div class="modal-background" @click="showModal = !showModal" ></div>
-      <app-settings ></app-settings>
+      <div class="modal-background" @click="showModal = !showModal"></div>
+      <app-settings></app-settings>
     </div>
 
     <header class="box is-radiusless has-background-white-ter columns is-mobile" style="justify-content:space-between; align-items:center; padding-bottom:0px;">
